@@ -7,7 +7,7 @@
 
 - Fork this repo and clone it to your `old machine`.
 - Run `Rscript consume.R OLD`.
-- Check whether there is `target_list.txt` file has been generated.
+- Check whether there is `target_list.txt` file that has been generated.
 
 
 ```bash
@@ -20,10 +20,10 @@
 ```
 
 - Push your repo.
-- Clone the updated repo to `new machine`.
+- Clone the updated repo to your `new machine`.
 - Run `Rscript consume.R NEW`.
 
-ps: When see the error messages below, you may need to handle them one by one, and do not choose the "y" option when the system asks you `whether you can to install from sources the package which needs compilian`, or if this situation can not be solved, you may need to Google it online because this might be derived other problems.
+*ps: When see the error messages like below, you may need to handle them one by one, for example, do not choose the "y" option when the system asks you `whether you can install from sources the package which needs compilation.`, or if this situation can not be solved, you may need to Google it online because this might be derived from other problems*.
 
 ```r
 > Rscript consume.R NEW
