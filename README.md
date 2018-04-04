@@ -23,9 +23,12 @@
 - Clone the updated repo to `new machine`.
 - Run `Rscript consume.R NEW`.
 
-ps: When see the error messages below, you may need to handle them one by one, and do not choose the "y" option when the system asks you `whether you can to install from sources the package which needs compilian` or just search online.
+ps: When see the error messages below, you may need to handle them one by one, and do not choose the "y" option when the system asks you `whether you can to install from sources the package which needs compilian`, or if this situation can not be solved, you may need to Google it online because this might be derived other problems.
 
 ```r
+> Rscript consume.R NEW
+... ...
+... ...
 Error in contrib.url(repos, type) :
   trying to use CRAN without setting a mirror
 Calls: source ... update.packages -> available.packages -> contrib.url
