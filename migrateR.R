@@ -1,6 +1,6 @@
 # check whether dplyr exists.
 if(!require("dplyr", quietly = T, warn.conflicts = F)){
-      install.packages("dplyr", repos="https://cloud.r-project.org/", lib = .libPaths(), quiet = T)
+      install.packages("dplyr", repos="https://cloud.r-project.org/", lib = .libPaths(), quiet = T, verbose = T)
       library(dplyr,quietly = T, warn.conflicts = F)
 }
 machine <- toupper(machine)
@@ -28,12 +28,18 @@ if(machine == "OLD"){
            need_to_install <- setdiff(target_list[,1], packages_already_exist[,1])
            if(need_to_install %>% length() > 0){
                  # install packages in a row.
-                 install.packages(c(need_to_install))
+                 try(install.packages(c(need_to_install),repos="https://cloud.r-project.org/",verbose = T, dependencies = T, Ncpus = parallel::detectCores()-1),silent = F)
                  # update packages.
                  update.packages(ask = F)
            }else{
                  message("No packages that are needed to be installed.")
            }
+           # update the target_list.txt file
+           # get the current package list.
+           package_list <- data.frame(installed.packages(),stringsAsFactors = F) %>% select(1)
+           # comment the next line only if you do not want to use the Microsoft R or your new machine do not have the Microsoft R installed.
+           package_list <- package_list %>% write.table("./target_list.txt", sep = ",", row.names = F, col.names = F)
+           message("Updated the new target_list file.")
       }
 }else{
       stop("Just enter NEW or OLD. Try it again.")
